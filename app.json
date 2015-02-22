@@ -1,0 +1,23 @@
+{
+    "name": "IDCF Cloud Billing Monitor",
+        "description": "A template to monitor IDCF Cloud billing metrics and post them to Mackerel",
+        "env": {
+            "CLOUDSTACK_API_KEY":{
+                "description": "IDCF Cloud API key"
+            },
+            "CLOUDSTACK_SECRET_ACCESS_KEY":{
+                "description": "IDCF Cloud secret key"
+            },
+            "MACKEREL_API_KEY":{
+                "description": "Mackerel API key"
+            },
+            "MACKEREL_SERVICE_NAME":{
+                "description": "The name of Mackerel service",
+                "value": "idcfcloud"
+            },
+            "MONITORING_INTERVAL":{
+                "description": "Monitoring interval in seconds",
+                "value": "60"
+            }
+        }
+}
