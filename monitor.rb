@@ -92,8 +92,14 @@ def calc_current_price
     end
   end
 
+  # use list_public_ip_addresses instead of public_ip_addresses because
+  # public_ip_addresses doesn't return zone_id correctly
+  available_zones = 
+    @cloudstack.list_public_ip_addresses["listpublicipaddressesresponse"]["publicipaddress"]
+    .group_by{|ip| ip["zoneid"]}.length
+
   current_price += @pubip_price * 
-    [@cloudstack.public_ip_addresses.length - 1, 0].max
+    [@cloudstack.public_ip_addresses.length - available_zones, 0].max
 
   current_price
 end
